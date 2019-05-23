@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// クラスコンポーネント
 class App extends Component {
   render() {
     const greeting = 'view variable';
@@ -13,10 +14,16 @@ class App extends Component {
             onClick={ () => alert('message') }
             onChange={ () => console.log('text changed')}
           />
+
+          <Cat />
         </React.Fragment>
         // </div>
     );
   }
 }
 
+// functionalコンポーネント
+const Cat = () => {
+  return <div>Meow!</div>;
+}
 export default App;
