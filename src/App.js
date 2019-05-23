@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // クラスコンポーネント
 class App extends Component {
@@ -6,7 +7,7 @@ class App extends Component {
     const profiles = [
       { name: 'Taro', age: 10},
       { name: 'Hanako', age: 15},
-      { name: 'Ichiro'},
+      { name: 'NoName', age: 8}
     ]
 
     const greeting = 'view variable';
@@ -17,7 +18,6 @@ class App extends Component {
     });
 
     return (
-        // <div>
         <React.Fragment>
           {dom}
           <label htmlFor="bar">Bar : </label>
@@ -27,16 +27,7 @@ class App extends Component {
           />
 
           {users}
-          {/* <User
-            name={"Taro"}
-            age={10}
-          />
-          <User
-            name={"Hanako"}
-            age={15}
-          /> */}
         </React.Fragment>
-        // </div>
     );
   }
 }
@@ -46,9 +37,10 @@ const User = (props) => {
   return <div>Hi, Iam {props.name}, and {props.age}years old.</div>;
 }
 
-// Default props
-User.defaultProps = {
-  age: 8,
+// prop-types
+User.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
 }
 
 
