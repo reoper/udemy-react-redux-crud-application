@@ -1,28 +1,14 @@
-/**
- * Action
- * 
- * ここにはtypeとactionを定義する
- * またtypeはユニークでなければならない
- */
+import axios from 'axios';
 
-// 以下にActionCreatorを定義していく
+export const READ_EVENTS = 'READ_EVENTS';
 
-// typeは他でも使用するのでここで定数として定義しておくのがスタンダード
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+const ROOT_URL = 'https://udemy-utils.herokuapp.com/api/v1';
+const QUERYSTRING = '?token=token123';
 
-
-// export const increment = () => {
-//     return {
-//         type: 'INCRIMENT'
-//     }    
-// }
-// 上は下と等価
-export const increment = () => ({
-    type: INCREMENT
-})
-
-export const decrement = () => ({
-    type: DECREMENT
-})
+export const readEvents = () => async dispatch => {
+    const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`);
+    // console.log(response);
+    // このdispatchでreducerにtypeとresponseが渡せる
+    dispatch({ type: READ_EVENTS, response });
+}
 

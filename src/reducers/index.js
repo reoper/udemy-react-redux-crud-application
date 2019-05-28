@@ -2,8 +2,8 @@
  * 状態の管理を総括するオブジェクト 
  */
 import { combineReducers } from 'redux';
-import count from './count';
+import events from './events';
 
 export default combineReducers({
-    count
+    events
 })
