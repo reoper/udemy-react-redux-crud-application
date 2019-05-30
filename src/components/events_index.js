@@ -5,6 +5,8 @@ import { readEvents } from '../actions';
 
 import _ from 'lodash';
 
+import { Link } from 'react-router-dom';
+
 class EventsIndex extends Component {
 
   componentDidMount() {
@@ -19,8 +21,9 @@ class EventsIndex extends Component {
         <td>{event.title}</td>
         <td>{event.body}</td>
       </tr>
-    ))
+    ));
   }
+
   render() {
     return (
       <React.Fragment>
@@ -37,6 +40,8 @@ class EventsIndex extends Component {
             { this.renderEvents() }
           </tbody>
         </table>
+
+        <Link to="events/new">New Event</Link>
       </React.Fragment>
     );
   }
