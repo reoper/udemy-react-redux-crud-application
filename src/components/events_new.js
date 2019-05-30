@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import { postEvent } from '../actions';
 
 class EventsNew extends Component {
-  constructor(props) {
-    super(props);
-    // this.onSubmit = this.onSubmit.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.onSubmit = this.onSubmit.bind(this);
+  // }
   renderField(field) {
     // console.log(field);
 
@@ -28,14 +28,17 @@ class EventsNew extends Component {
   }
   render() {
     // console.log(this.props);
-    const { handleSubmit } = this.props;
+    // handleSubmit : propsのサブミット関数
+    // pristine : 入力項目のいずれかが空のときtrueとなる
+    // submitting : submitボタンが押されたらtrueとなる（今回は2度押し防止に使用)
+    const { handleSubmit, pristine, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div><Field label="Title" name="title" type="text" component={this.renderField} /></div>
         <div><Field label="Body" name="body" type="text" component={this.renderField} /></div>
 
         <div>
-          <input type="submit" value="submit" disabled={false} />
+          <input type="submit" value="submit" disabled={pristine || submitting} />
           <Link to="/">Cancel</Link> 
         </div>
       </form>
