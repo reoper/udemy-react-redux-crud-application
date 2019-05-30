@@ -1,5 +1,8 @@
 import _ from 'lodash';
-import { READ_EVENTS } from '../actions';
+import {
+    READ_EVENTS,
+    DELETE_EVENTS
+} from '../actions';
 
 export default (events = {}, action) => {
     switch (action.type) {
@@ -17,6 +20,9 @@ export default (events = {}, action) => {
             // ]
             // console.log(_.mapKeys(action.response.data, 'id'));
             return _.mapKeys(action.response.data, 'id');
+        case DELETE_EVENTS:
+            delete events[action.id];
+            return { ...events };
         default:
             return events;
     }
